@@ -12,8 +12,3 @@
 	
 
 ?>
-
-<!--Database=DEV_WebAppDev_Database;
-Data Source=br-cdbr-azure-south-a.cloudapp.net;
-User Id=be5a658a3ddc73;
-Password=0e4c7b9b-->
