@@ -10,7 +10,7 @@
 <?php
 			include_once("config/config.php");
 		
-			
+								
 				$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$sthandler = $con->prepare("SELECT * FROM users ORDER BY blogTime DESC");
 				$sthandler->execute();
