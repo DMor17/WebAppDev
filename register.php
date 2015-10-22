@@ -6,6 +6,7 @@
 <html>
 <head>
 	<title>Adventure Blog | Register Page</title>
+	<link href="stylesheets/stylesheet-index.css" rel="stylesheet" type="text/css">
 	<link href="stylesheets/stylesheet-register.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="images/icon.ico" > 
 	<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
@@ -14,9 +15,11 @@
 </head>
     <body>
 	<div class="header">
-				<img src="images/xplor.png"  class="xplor" alt=""/>
-				
+		<img src="images/xplor.png"  class="xplor" alt=""/>
 	</div>
+	
+		<div class="header-image"></div>
+	
 		<div class="container">
 			<div class="content">
 				<form method="post" action="">

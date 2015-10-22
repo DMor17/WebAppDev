@@ -1,11 +1,6 @@
 <?php 
 	include_once("config/config.php");
 ?>
-
-<?php
-	if( !(isset( $_POST['login'] ) ) ) {
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,9 +32,13 @@
 		</div>
 			
 		<div class="header-image">
-			<h1>Discussion Board</h1>
-			<h2>Here you can share your adventures with the world<h2>
-	</div>
+			<h1>Discussion Board.</h1>
+			<h2>A community to share your adventures with no matter your current location.</h2>
+			<h3>Use the search bar below to search by tag.</h3>
+			<div class="center-round">
+				<input type="text" maxlength="30" value="Search..." required autofocus name="search" class="search-round" />
+			</div>
+		</div>
 	
 	<div class="container"> <div id="toContainer"></div>
 		<div class="content">
@@ -52,6 +51,8 @@
     </body>
 </html>
 	<?php
+	if( !(isset( $_POST['login'] ) ) ) {
+		
 	} else {
 		$usr = new Users;
 		$usr->storeFormValues( $_POST );
