@@ -144,7 +144,7 @@ body{
 			letter-spacing: 0;
 			font-weight: 400;
 			font-style: normal;
-			color:#dfdfdf;
+			color:#ffffff;
 }	
 
 .text-straight { 
@@ -164,12 +164,14 @@ body{
 			padding: 10px;
 }
 
+
 .button-round { 
 			border-radius: 46px; 
 			-moz-border-radius: 46px; 
 			-webkit-border-radius: 46px;
 			height:30px; 
 			width: 80px;
+			background-color:transparent;
 			border: 1px solid #D9D9D9;
 			outline-width: 0;
 			text-align:center;
@@ -180,7 +182,25 @@ body{
 			font-style: normal;
 			color:#404040;
 }	
-	
+
+.button-register-round { 
+			border-radius: 46px; 
+			-moz-border-radius: 46px; 
+			-webkit-border-radius: 46px;
+			height:30px; 
+			width: 80px;
+			background-color:transparent;
+			border: 1px solid #E142E1;
+			outline-width: 0;
+			text-align:center;
+			font-family: robotoRegular;
+			font-size: 14px;
+			letter-spacing: 0;
+			font-weight: 400;
+			font-style: normal;
+			color:#404040;
+}	
+
 .center-round{
 
 			margin:0 auto;
@@ -231,16 +251,13 @@ input[type="password"]:hover {
 }
 
 input[type="submit"]:hover{
-			background-color: grey;
+			color: #dfdfdf;
 }
 
 input[type="button"]:hover{
-			background-color: grey;
+			color: #dfdfdf;
 }
 
-input[name="search"]:hover{
-			color: #404040;
-}
 
 
 h1{

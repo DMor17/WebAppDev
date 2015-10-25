@@ -17,15 +17,16 @@
 				<img src="images/xplor.png"  class="xplor" alt=""/>
 			
 				<div class="login">
-				
+					<!--Form called 'post'-->
 					<form method="post" action="">
-					
-						<input type="text" maxlength="30" value="Username" required autofocus name="username" class="text-round" />
-									
-						<input type="password" maxlength="30" value="Password" required name="password" class="text-round"/>
-									
-						<input type="submit" name="login" value="Log In" class="button-round"/>
-						<input type="button" name="register" value="Register" onclick="location.href='register.php'" class="button-round"/>
+						<!--Username--> 
+						<input type="text" maxlength="30"  value="Username"  onclick="this.value='';" autofocus name="username" class="text-round" required />
+						<!--Password-->
+						<input type="password" maxlength="30" value="Password" onclick="this.value='';" name="password" class="text-round" required/>
+						<!--Login button-->			
+						<input type="submit" name="login" value="Sign In" class="button-round"/>
+						<!--Register Button-->
+						<input type="button" name="register"  value="Sign Up" onclick="location.href='register.php'" class="button-register-round"/>
 					</form>
 					
 				</div>
@@ -35,15 +36,20 @@
 			<h1>Discussion Board.</h1>
 			<h2>A community to share your adventures with no matter your current location.</h2>
 			<h3>Use the search bar below to search by tag.</h3>
-			<div class="center-round">
-				<input type="text" maxlength="30" value="Search..." required autofocus name="search" class="search-round" />
-			</div>
+			
+			<form method="post" action="">
+			
+				<div class="center-round">
+					<input type="text" maxlength="30" value="Search..." onclick="this.value='';" autofocus name="searchText" class="search-round" required />
+					<input type="image" src="images/search.png" id="search-image" name="search" width="20" height="20" />
+				</div>
+			</form>
+			
 		</div>
 	
 	<div class="container"> <div id="toContainer"></div>
 		<div class="content">
 			The blog will be here
-
 		 </div>
 				
 
@@ -52,8 +58,9 @@
 </html>
 	<?php
 	if( !(isset( $_POST['login'] ) ) ) {
-		
+		//not logged in
 	} else {
+		
 		$usr = new Users;
 		$usr->storeFormValues( $_POST );
 		if( $usr->userLogin() ) { // if the user exists then
@@ -93,9 +100,7 @@
 				
 					if($verified == 0 ) {//If account isnt verified, tell the user they have to wait
 						echo '<h1>Account not yet activated.</h1><br> Please contact the site admin <a href=logout.php> Click Here </a> to return to the login page';
-					} 
-					
-					if($privilege == 0){//user is reader
+					} else if($privilege == 0){//user is reader
 						header('Location: reader-index.php');
 					} else if ($privilege == 1){//user is reader
 						header('Location: author-index.php');
@@ -105,6 +110,7 @@
 					
 		} else {
 			// incorrect username or password or dont have an account
+			echo 'incorrect username or password. you may not have an account';
 		}
 	}
 

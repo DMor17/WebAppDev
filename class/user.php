@@ -92,7 +92,7 @@ session_start();
 				$stmt->bindValue( "surname", $this->surname, PDO::PARAM_STR );
 				$stmt->execute();
 				
-				return "Registration Successful <br/> <a href='login.php'>Login Now</a>";
+				return header( 'Location: index.php' );
 			}catch( PDOException $e ) {
 				return $e->getMessage();
 			}
