@@ -43,7 +43,7 @@
 							<label>Email</label>
 							<input type="email" id="email" maxlength="30" required name="email" class="text-straight" />
 							<div class="button-padding">
-								<div class="g-recaptcha" data-sitekey="6Lf1ZAETAAAAAM0kLqTbl3Aqs7IVPOU0V9BFpum_"></div>
+								<div class="g-recaptcha" data-sitekey="6LeXng8TAAAAAM5QDu7wATG1HO4u4u7ea_euLtrg"></div>
 							</div>
 							<input type="submit" name="register" value="Register" class="button-round"/>
 
@@ -58,7 +58,7 @@
 
 } else {
 	//Captcha Code
-	$recaptcha_secret = "6Lf1ZAETAAAAAO7_NWS8oaMwtqY3kZCAPk9gyIIZ";
+	$recaptcha_secret = "6LeXng8TAAAAAOQDFolpkW2yPDKYoPRXwciYNpom";
 
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$recaptcha_secret."&response=".$_POST['g-recaptcha-response']);
 
