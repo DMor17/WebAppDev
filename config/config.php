@@ -6,7 +6,6 @@
     define( "DB_USERNAME", "b0d377dde65ed2" );
     define( "DB_PASSWORD", "fe8a6525" );
 	define( "CLS_PATH", "class" );
-	
 	//classes path
 	include_once( CLS_PATH . "/user.php" );
 	
