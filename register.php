@@ -33,7 +33,6 @@
 							<label>Username</label>
 							<input type="text" id="username" maxlength="30" required autofocus name="username" class="text-straight"/>
 
-
 							<label>Password</label>
 							<input type="password" id="password" maxlength="30" required name="password" class="text-straight" />
 
