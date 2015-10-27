@@ -2,7 +2,7 @@
 /*http://tagging.pui.ch/post/37027746608/tagsystems-performance-tests*/
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `userID` 		int(11) 				NOT NULL AUTO_INCREMENT COMMENT 'User ID',
+  `userID` 		int(6) 				NOT NULL AUTO_INCREMENT COMMENT 'User ID',
   `username` 	varchar(32) 		NOT NULL 		COMMENT 'Username',
   `password` 	varbinary(250) 	NOT NULL 		COMMENT 'Password',
   `email` 		varchar(50) 		NOT NULL 		COMMENT 'Email Address',
@@ -13,10 +13,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`userID`,`username`)
 );
 
-
 CREATE TABLE IF NOT EXISTS `posts` (
-  `postID` 		int(11) 				NOT NULL AUTO_INCREMENT COMMENT 'Blog Post ID',
-  `userID` 		int(11) 				NOT NULL 		COMMENT 'User ID',
+  `postID` 		int(6) 				NOT NULL AUTO_INCREMENT COMMENT 'Blog Post ID',
+  `userID` 		int(6) 				NOT NULL 		COMMENT 'User ID',
   `title` 			varchar(50) 		NOT NULL 		COMMENT 'Blog Post Title',
   `blogPost` 	text 					NOT NULL 		COMMENT 'Blog Post',
   `blogTime` 	timestamp default CURRENT_TIMESTAMP COMMENT 'Time of post Creation',
@@ -27,16 +26,17 @@ CREATE TABLE IF NOT EXISTS `posts` (
 );
 
 CREATE TABLE IF NOT EXISTS `images` (
-  `imageID` 		int(11)  				NOT NULL AUTO_INCREMENT		COMMENT 'ID of the image',
+  `imageID` 		int(6)  				NOT NULL AUTO_INCREMENT		COMMENT 'ID of the image',
   `image` 			blob					NOT NULL 		COMMENT 'The image being stored',
-  `postID` 			int(11) 				NOT NULL 		COMMENT 'Blog Post ID if post image is in',
+  `postID` 			int(6) 				NOT NULL 		COMMENT 'Blog Post ID if post image is in',
   PRIMARY KEY (`imageID`),
   FOREIGN KEY(`postID`) REFERENCES posts(`postID`)
 );
 
 CREATE TABLE IF NOT EXISTS `comments` (
-  `postID` 						int(11) 					NOT NULL 		COMMENT 'Post ID where the comment is on',
-  `commentID` 				int(11) 					NOT NULL AUTO_INCREMENT COMMENT 'Unique Comment ID',
+  `postID` 						int(6) 					NOT NULL 		COMMENT 'Post ID where the comment is on',
+  `commentID` 				int(6) 					NOT NULL AUTO_INCREMENT COMMENT 'Unique Comment ID',
+  `userID` 						int(6) 		NOT NULL AUTO_INCREMENT COMMENT 'User ID (to get username)',
   `commenterUsername` 	varchar(32) 			NOT NULL 		COMMENT 'Username of Commenter',
   `_comment` 				text						NOT NULL 		COMMENT 'User Comment',
   PRIMARY KEY (`commentID`),
