@@ -1,4 +1,5 @@
 
+/*http://tagging.pui.ch/post/37027746608/tagsystems-performance-tests*/
 
 CREATE TABLE IF NOT EXISTS `users` (
   `userID` 		int(11) 				NOT NULL AUTO_INCREMENT COMMENT 'User ID',
@@ -18,8 +19,9 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `userID` 		int(11) 				NOT NULL 		COMMENT 'User ID',
   `title` 			varchar(50) 		NOT NULL 		COMMENT 'Blog Post Title',
   `blogPost` 	text 					NOT NULL 		COMMENT 'Blog Post',
-  `blogTime` timestamp default CURRENT_TIMESTAMP COMMENT 'Time of post Creation',
+  `blogTime` 	timestamp default CURRENT_TIMESTAMP COMMENT 'Time of post Creation',
   `tags`			varchar(100)		NULL				COMMENT 'Tags seperated by comma for post',
+  `rating`		int(11)				DEFAULT 0		COMMENT 'Rating',
   PRIMARY KEY (`postID`),
   FOREIGN KEY (`userID`) REFERENCES users(`userID`)
 );
