@@ -242,13 +242,7 @@ body{
 			margin-right:10px;
 }
 
-input[type="text"]:hover {
-			color: #dfdfdf;
-}
 
-input[type="password"]:hover {
-			color: #dfdfdf;
-}
 
 input[type="submit"]:hover{
 			color: #dfdfdf;

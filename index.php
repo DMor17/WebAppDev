@@ -24,7 +24,7 @@
 						<!--Password-->
 						<input type="password" maxlength="30" value="Password" onclick="this.value='';" name="password" class="text-round" required/>
 						<!--Login button-->			
-						<input type="submit" name="login" value="Sign In" class="button-round"/>
+						<input type="submit" name="login" value="Sign In" class="button-register-round"/>
 						<!--Register Button-->
 						<input type="button" name="register"  value="Sign Up" onclick="location.href='register.php'" class="button-register-round"/>
 					</form>
