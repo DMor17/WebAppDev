@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `images` (
 CREATE TABLE IF NOT EXISTS `comments` (
   `postID` 						int(6) 					NOT NULL 		COMMENT 'Post ID where the comment is on',
   `commentID` 				int(6) 					NOT NULL AUTO_INCREMENT COMMENT 'Unique Comment ID',
-  `userID` 						int(6) 					NOT NULL AUTO_INCREMENT COMMENT 'User ID (to get username)',
+  `userID` 						int(6) 					NOT NULL 	 COMMENT 'User ID (to get username)',
   `commenterUsername` 	varchar(32) 			NOT NULL 		COMMENT 'Username of Commenter',
   `_comment` 				text						NOT NULL 		COMMENT 'User Comment',
   PRIMARY KEY (`commentID`),
