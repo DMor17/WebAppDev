@@ -239,17 +239,17 @@ session_start();
 			try {
 				$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				$sql = "INSERT INTO comments (postID, commenterUsername,  _comment) VALUES ( :postID, :commenterUsername, :theComment) ";
+				$sql = "INSERT INTO comments (postID, commenterUsername,  _comment) VALUES ( :postID, '$commenterUsername', :theComment) ";
 				
 				$stmt = $con->prepare( $sql );
 				$stmt->bindValue( "theComment", $this->theComment, PDO::PARAM_STR );
-				$stmt->bindValue( "commenterUsername", $this->$_SESSION['username'], PDO::PARAM_STR );
 				$stmt->bindValue( "postID", $this->postID, PDO::PARAM_STR );
 				
 				$valid = $stmt->execute();
 				
 				if ($valid){
 					echo'success';
+					header( 'Location: admin-index.php' );
 					$correct = true;
 				}else{
 					echo'failure';
