@@ -120,7 +120,7 @@
 					?>
 												
 					
-					<div class="username"><?php echo $commenterUsername;?> </div>
+					<div class="username"><?php echo $commenterUsername;?></div>
 					<div class="comment"><?php echo $_comment;?> </div>
 												
 			<?php

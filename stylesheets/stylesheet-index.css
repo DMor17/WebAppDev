@@ -377,10 +377,10 @@ textarea{
 
 .username{
 
-			font-weight: bold;
+			font-weight: normal;
 			font-size: 1em;
 			text-decoration: underline;
-			color: #4D9CC3;
+			color: #E142E1;
 			padding-left:30px;
 			padding-top: 20px;
 
