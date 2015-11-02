@@ -73,9 +73,21 @@ body{
 			z-index: 1;
 }
 
+.comment{
+		width:auto;
+		padding:15px;
+		margin: 0 auto;
+		margin-left: auto;
+		margin-right: auto;
+		text-align:left;
+		display: block; 
+		padding-left:30px;
+		color:#919191;
+	}
+
 .container {
 			width: 100%;
-			height: 100%;
+			height: auto;
 			background: white;
 			margin: 0;
 			padding: 0;
@@ -84,7 +96,7 @@ body{
 
 .content {
 			margin:0 auto;
-			width: 60%;
+			width: 70%;
 			height: auto;
 			text-align:left;
 			background: white;
@@ -112,6 +124,17 @@ body{
 			
 
 }
+
+.colour-split{
+			height: 5px;
+			width: 100%;
+			z-index:100;
+			background: #4D9CC3;
+
+
+}
+
+
 .text-round { 
 			border-radius: 46px; 
 			-moz-border-radius: 46px; 
@@ -136,7 +159,7 @@ body{
 			background-color:transparent;
 			height:30px; 
 			width: 200px;
-			border: 1px solid #E142E1;
+			border: 1px solid #4D9CC3;
 			outline-width: 0;
 			text-align:center;
 			font-family: robotoRegular;
@@ -183,6 +206,27 @@ body{
 			color:#404040;
 }	
 
+.add-comment{
+			padding:15px;
+}
+.button-comment-round { 
+			border-radius: 46px; 
+			-moz-border-radius: 46px; 
+			-webkit-border-radius: 46px;
+			height:30px; 
+			width: 120px;
+			background-color:transparent;
+			border: 2px solid #D9D9D9;
+			outline-width: 0;
+			text-align:center;
+			font-family: robotoRegular;
+			font-size: 14px;
+			letter-spacing: 0;
+			font-weight: 400;
+			font-style: normal;
+			color:#404040;
+}	
+
 .button-register-round { 
 			border-radius: 46px; 
 			-moz-border-radius: 46px; 
@@ -202,16 +246,11 @@ body{
 }	
 
 .center-round{
-
 			margin:0 auto;
 			text-align: center;
-
-
-
 }
 
 .header{
-
 			font-family: robotoRegular;
 			background-color: #FFFFFF;
 			max-width: 100%;
@@ -223,10 +262,8 @@ body{
 			right:0;
 			top:0;
 			transition: all ease 500ms;
-			-webkit-box-shadow: 0 10px 10px -10px #000000;
-			-moz-box-shadow: 0 5px 5px -20px #000000;
-			box-shadow: 0 3px 3px 1px #4D9CC3;
-		
+			 border: 1px solid #D9D9D9;
+
 }
 
 
@@ -280,6 +317,30 @@ h2{
 			font-style:normal;
 }
 
+.date{
+			text-align:center;
+			color: #D9D9D9;
+			font-size: 15px; 
+			font-family: robotoMedium;
+			letter-spacing:2px;
+			font-weight:400;
+			font-style:normal;
+
+}
+
+.author{
+			text-align:center;
+			color: #404040;
+			padding-top:5px;
+			font-size: 14px; 
+			font-family: robotoMedium;
+			letter-spacing:1px;
+			font-weight:400;
+			font-style:normal;
+
+}
+
+
 h3{
 			text-align:center;
 			color:#F8F8F8;
@@ -290,4 +351,40 @@ h3{
 			font-style:normal;
 }
 
+h4{
 
+			text-align:center;
+			color: #4D9CC3 ;
+			font-size: 24px; 
+			font-family: robotoMedium;
+			letter-spacing:3px;
+			font-weight:400;
+			font-style:normal;
+}
+
+textarea{
+		  resize: none;
+		  border: 2px solid #D9D9D9;
+		  outline-width: 0;
+		  padding: 15px;
+		  padding-bottom:-10px;
+		  width:60%;
+		  height:60px;
+		  font-size: 15px; 
+			font-family: robotoMedium;
+}
+
+
+.username{
+
+			font-weight: bold;
+			font-size: 1em;
+			text-decoration: underline;
+			color: #4D9CC3;
+			padding-left:30px;
+			padding-top: 20px;
+
+
+}
+
+		
