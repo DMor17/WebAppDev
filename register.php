@@ -39,11 +39,20 @@
 							<label>Confirm Password</label>
 							<input type="password" id="conpassword" maxlength="30" required name="conpassword" class="text-straight"/>
 
+							Tick if you wish to be an Author. Otherwise reader account.
+							<br>
+							<input type="hidden" name="privilege" value="0" />
+							<input type="checkbox" name="privilege" value="1"> 
+							
 							<label>Email</label>
 							<input type="email" id="email" maxlength="30" required name="email" class="text-straight" />
 							<div class="button-padding">
 								<div class="g-recaptcha" data-sitekey="6LeXng8TAAAAAM5QDu7wATG1HO4u4u7ea_euLtrg"></div>
 							</div>
+							
+						
+
+							
 							<input type="submit" name="register" value="Register" class="button-round"/>
 
 							<input type="button" name="cancel" value="Cancel" onclick="location.href='login.php'" class="button-round"/>

@@ -9,6 +9,7 @@ session_start();
 	 public $email = null;
 	 public $firstname = null;
 	 public $surname = null;
+	 public $privilege= null;
 	 
 	 public $promoteUsername = null;
 	 public $banUsername = null;
@@ -23,6 +24,7 @@ session_start();
 	 
 	 public $newComment = null;
 	 
+	 
 	 public $salt = "Zo4rU5Z1YyKJAASY0PT6EUg7BBYdlEhPaNLuxAwU8lqu1ElzHv0Ri7EM6irpx5w";
 	 
 	 public function __construct( $data = array() ) {
@@ -31,6 +33,7 @@ session_start();
 		 if( isset( $data['email'] ) ) $this->email = stripslashes( strip_tags( $data['email'] ) );
 		 if( isset( $data['firstname'] ) ) $this->firstname = stripslashes( strip_tags( $data['firstname'] ) );
 		 if( isset( $data['surname'] ) ) $this->surname = stripslashes( strip_tags( $data['surname'] ) );
+		 if( isset( $data['privilege'] ) ) $this->privilege  = stripslashes( strip_tags( $data['privilege'] ) );
 		 if( isset( $data['promoteUsername'] ) ) $this->promoteUsername = stripslashes( strip_tags( $data['promoteUsername'] ) );
 		 if( isset( $data['banUsername'] ) ) $this->banUsername = stripslashes( strip_tags( $data['banUsername'] ) );
 		 
@@ -82,7 +85,7 @@ session_start();
 			try {
 				$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				$sql = "INSERT INTO users(username, password, email, firstname, surname) VALUES(:username, :password, :email, :firstname, :surname)";
+				$sql = "INSERT INTO users(username, password, email, firstname, surname, privilege) VALUES(:username, :password, :email, :firstname, :surname, :privilege)";
 				
 				$stmt = $con->prepare( $sql );
 				$stmt->bindValue( "username", $this->username, PDO::PARAM_STR );
@@ -90,6 +93,7 @@ session_start();
 				$stmt->bindValue( "email", $this->email, PDO::PARAM_STR );
 				$stmt->bindValue( "firstname", $this->firstname, PDO::PARAM_STR );
 				$stmt->bindValue( "surname", $this->surname, PDO::PARAM_STR );
+				$stmt->bindValue( "privilege", $this->privilege, PDO::PARAM_STR );
 				$stmt->execute();
 				
 				return header( 'Location: index.php' );

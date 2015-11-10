@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `firstname` 	varchar(20) 		NOT NULL 		COMMENT 'Firstname',
   `surname` 	varchar(20) 		NOT NULL 		COMMENT 'Surname',
   `privilege` 	tinyint(3) 			DEFAULT 0 	COMMENT '0 For reader, 1 for Author, 2 for Admin',
-  `verified` 	bit 					DEFAULT 0 	COMMENT '0 For non verified, 1 for verified account',
+  `verified` 	bit 					DEFAULT 0 	COMMENT '0 For non verified, 1 for verified account, 2 for pending admin privilege',
   PRIMARY KEY (`userID`,`username`)
 );
 
