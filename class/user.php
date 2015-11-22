@@ -194,10 +194,11 @@ session_start();
 	 
 	 public function createPost() {
 		$correct = false;
+		$posterUserID = $_SESSION['userID'];
 			try {
 				$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				$sql = "INSERT INTO posts(title, blogPost) VALUES(:title, :blogPost)";
+				$sql = "INSERT INTO posts(userID, title, blogPost) VALUES('$posterUserID', :title, :blogPost)";
 				
 				$stmt = $con->prepare( $sql );
 				$stmt->bindValue( "title", $this->title, PDO::PARAM_STR );

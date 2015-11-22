@@ -12,7 +12,6 @@
 			//if not logged in stay here
 		}
 			
-		
 		if( !(isset( $_POST['login'] ) ) ) {
 ?>
 
@@ -85,8 +84,8 @@
 		<div class="colour-split"></div>
 	<div class="container"> <div id="toContainer"></div>
 		<div class="content">
-			<br>
-					<div class="content">
+		<br>
+					
 		<!-- If user is a non account, just show posts and comments -->
 		<?php
 			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
@@ -136,6 +135,10 @@
 		} else {
 		$usr = new Users;
 		$usr->storeFormValues( $_POST );
+		
+		$username= $_POST['username'];
+		$password =  $_POST['password'];
+			
 		if( $usr->userLogin() ) { // if the user exists then
 		
 			$_SESSION["loggedIn"] = true;
@@ -143,7 +146,6 @@
 			$_SESSION['password'] = $_POST['password'];
 			
 			$rememberme=$_POST['rememberme'];
-			$username = $_POST['username'];
 			
 			$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 			$sthandler = $con->prepare("SELECT userID, email, firstname, surname, privilege, verified FROM users WHERE username = :username");

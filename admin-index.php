@@ -160,10 +160,8 @@
 					?>
 
 		<?php			
-				}
-		}
-		?>
-							<!-- Add a comment form -->
+				}?>
+											<!-- Add a comment form -->
 							<div class="comment-feature">
 								<form method="post" action="">
 									<textarea input type="text" id="theComment" required name="theComment"> </textarea>
@@ -171,9 +169,12 @@
 									<br>
 									<input type="submit" name="insertComment" class="button-comment-round" value="Add Comment" />
 								</form>
-								
-							</div>
+							</div> <?php
+		}
+		?>
+
 			</div>	
+		</div>
 		</div>
     </body>
 </html>

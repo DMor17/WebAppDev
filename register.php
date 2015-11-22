@@ -96,7 +96,7 @@
 	if ( $sthandler->rowCount() > 0 ) {
 		echo ('Sorry, the username '.$_POST['username'].' is already in use.');
 	}else{
-		echo $usr->register($_POST);	
+		echo $usr->register();	
 	}
 	}
 
