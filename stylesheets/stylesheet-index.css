@@ -94,6 +94,8 @@ body{
 			position:relative;
 }
 
+
+
 .content {
 			margin:0 auto;
 			width: 70%;
@@ -354,6 +356,17 @@ h3{
 h4{
 
 			text-align:center;
+			color: #4D9CC3 ;
+			font-size: 24px; 
+			font-family: robotoMedium;
+			letter-spacing:3px;
+			font-weight:400;
+			font-style:normal;
+}
+
+h5{
+
+			text-align:left;
 			color: #4D9CC3 ;
 			font-size: 24px; 
 			font-family: robotoMedium;

@@ -36,7 +36,7 @@
     <body>
 		<div class="header">
 			
-				<img src="images/xplor.png"  class="xplor" alt=""/>
+			    <img src="images/xplor.png"  class="xplor" alt=""/>
 				<div class="login">
 					<!--Form called 'post'-->
 					<form method="post" action="">

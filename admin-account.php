@@ -59,54 +59,35 @@ if ($_SESSION["loggedIn"]){
 		</div>
 		
 		<div class="container">
-		
-			<div align ="center"><b>Edit Users</b></div>
-				<div class="border4">
-				
+			<div class="content">
+<br><br><br>
 					<form method="post" action="">
-						<div class="text-padder2">
-							<label>Enter Username to Promote to Admin</label><br>
+							<h5>Enter Author Username to Promote to Admin</h5>
 							<input type="text" id="promoteUsername" maxlength="30" required name="promoteUsername"/>
-						</div>	
-						<div class="button-padder2">
+							<br>
 							<input type="submit" name="promote" value="Promote" />
-						</div>
 					</form>
 						
 					<form method="post" action="">
-						<div class="text-padder3"><br/>
-							<label>Enter Username to Ban/Unban</label><br>
-							<input type="text" id="banUsername" maxlength="30" required name="banUsername"/>
-						</div>	<br/>
-						<div class="button-padder2">
+							<h5>Activate User Accounts</h5>
+							<input type="text" id="activateUsername" maxlength="30" required name="activateUsername"/>
+							<br>
 							<input type="submit" name="ban" value="Ban/Unban" />
-						</div>
 					</form>			
-			</div> <!--border bans users etc-->
+
 		
-			
-		<div class="postContainer">
 		
-			<div align ="center"><b>Make Post</b></div>
-				<div class="border5">
-			
 					<form method="post" action="">
-						<div class="text-padder2">
-								<label>Enter Post Title</label><br>
-									<input type="text" id="title" maxlength="30" required name="title"/>
-						</div>
-						<div class="text-padder3">
-								<label>Enter Blog Post</label><br>
-								<textarea rows="4" cols="50" input type="text" id="blogPost" required name="blogPost"> </textarea>
-							<div class="button-padder3">
-								<input type="submit" name="submitPost" value="Post Blog" />
-							</div>
-						</div>
-								
-							
+						<h5>Create new post</h5>
+						<input type="text" id="title" maxlength="30" required name="title"/>
+						<br>
+						<br>
+						<textarea rows="4" cols="50" input type="text" id="blogPost" required name="blogPost"> </textarea>
+						<br>
+						<input type="submit" name="submitPost" value="Post Blog" />
 					</form>	
-				</div>
-			</div>
+
+
 			
 			<div class="editContainer">
 		
@@ -251,6 +232,7 @@ if ($_SESSION["loggedIn"]){
 	?>			</table>
 				</div>
 
+		</div>
 		</div>
 			
     </body>

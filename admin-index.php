@@ -92,7 +92,25 @@
 					<div class="author">By <?php echo $author;?></div>
 					<br>
 					<?php echo $post;?><br>
-							
+							<!-- Delete Post form -->
+							<form method="post" action="">
+								<div class='edit-data'>
+									<input type="hidden" name="deletePostID" value="<?php echo $postID; ?>">  
+									<input type="image" src="images/delete.png" name="deletePost" value="Delete">
+								</div>
+							</form>
+					<!-- Delete a comment -->
+					<?php
+					if(isset( $_POST['deletePost'] ) ) { 
+						$thePostID = $_POST['deletePostID'];
+												
+						$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+						$sthandler = $con->prepare("DELETE FROM posts WHERE postID = '$thePostID' ");
+						$sthandler->execute();
+						
+						header( 'Location: admin-index.php' );
+					}
+					?>
 					<?php 
 						$con2 = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
 						$sthandler2 = $con2->prepare("SELECT * FROM comments WHERE postID = '$postID' ");
@@ -141,7 +159,7 @@
 					?>
 					<!-- Delete comment form -->
 							<form method="post" action="">
-								<div class='report'>
+								<div class='edit-data'>
 									<input type="hidden" name="deleteCommentID" value="<?php echo $commentID; ?>">  
 									<input type="image" src="images/delete.png" name="deleteMe" value="Delete">
 								</div>
