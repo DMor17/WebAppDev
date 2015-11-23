@@ -62,17 +62,17 @@ if ($_SESSION["loggedIn"]){
 			<div class="content">
 <br><br><br>
 					<form method="post" action="">
-							<h5>Enter Author Username to Promote to Admin</h5>
+							<h5>Enter Username to Promote to Admin</h5>
 							<input type="text" id="promoteUsername" maxlength="30" required name="promoteUsername"/>
 							<br>
 							<input type="submit" name="promote" value="Promote" />
 					</form>
 						
 					<form method="post" action="">
-							<h5>Activate User Accounts</h5>
+							<h5>Activate/Deactivate User Accounts</h5>
 							<input type="text" id="activateUsername" maxlength="30" required name="activateUsername"/>
 							<br>
-							<input type="submit" name="ban" value="Ban/Unban" />
+							<input type="submit" name="activate" value="Activate/Deactivate" />
 					</form>			
 
 		
@@ -119,122 +119,11 @@ if ($_SESSION["loggedIn"]){
 					</form>
 					
 					</div>
+
+
+				</div>
 			</div>
-			<br>
-			<br>			
-		<div align ="center"><b>Registered Users</b></div>
-		<table>
-			  <tr>
-				<td><b>UserID</b></td>
-				<td><b>Username</b></td> 
-				<td><b>Email</b></td>
-				<td><b>Privilege</b></td>
-				<td><b>Deactivated</b></td>
-				<td><b>Banned</b></td>
-			  </tr>
-			
-			<?php
-			include_once("config/config.php");
-					
-				$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
-				$sthandler = $con->prepare("SELECT * FROM users");
-				$sthandler->execute();
-
-				while ($row = $sthandler->fetch(PDO::FETCH_ASSOC)){
-				
-							$userID = $row['userID'];
-							$username = $row['username'];
-							$email= $row['email'];
-							$privilege = $row['privilege'];
-							$deactivated = $row['deactivated'];
-							$banned = $row['banned'];
-							
-			?>
-			  <tr>
-				<td><?php echo $userID;?></td>
-				<td><?php echo $username;?></td> 
-				<td><?php echo $email;?></td>
-				<td><?php echo $privilege;?></td>
-				<td><?php echo $deactivated;?></td>
-				<td><?php echo $banned;?></td>
-			  </tr>
-			
-			
-<?php
-				}
-?>			</table>
-
-			<br>
-			<br>			
-			<div align ="center"><b>Blog Post Titles</b>
-			<table>
-				  <tr>
-					<td><b>Blog Post ID</b></td>
-					<td><b>Title</b></td> 
-
-				  </tr>
-				
-				<?php
-				include_once("config/config.php");
-						
-					$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
-					$sthandler = $con->prepare("SELECT * FROM posts");
-					$sthandler->execute();
-
-					while ($row = $sthandler->fetch(PDO::FETCH_ASSOC)){
-					
-								$postID = $row['postID'];
-								$postTitle = $row['title'];
-								
-				?>
-				  <tr>
-					<td><?php echo $postID;?></td>
-					<td><?php echo $postTitle;?></td> 
-				  </tr>
-	<?php
-					}
-	?>			</table>
-				</div>
-				
-							<br>
-			<br>			
-			<div align ="center"><b>Reported Comments</b>
-			<table>
-				  <tr>
-				    <td><b>Post ID</b></td>
-					<td><b>Comment ID</b></td>
-					<td><b>Commenter Username</b></td> 
-					<td><b>Reported Comment</b></td> 
-				  </tr>
-				
-				<?php
-				include_once("config/config.php");
-						
-					$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
-					$sthandler = $con->prepare("SELECT * FROM comments WHERE report = 1");
-					$sthandler->execute();
-
-					while ($row = $sthandler->fetch(PDO::FETCH_ASSOC)){
-					
-								$commentID = $row['commentID'];
-								$commenterUsername = $row['commenterUsername'];
-								$comment = $row['_comment'];	
-								$post= $row['postID'];	
-				?>
-				  <tr>
-				    <td><?php echo $postID;?></td>
-					<td><?php echo $commentID;?></td>
-					<td><?php echo $commenterUsername;?></td> 
-					<td><?php echo $comment;?></td> 
-				  </tr>
-	<?php
-					}
-	?>			</table>
-				</div>
-
 		</div>
-		</div>
-			
     </body>
 </html>
 
@@ -306,24 +195,24 @@ if ($_SESSION["loggedIn"]){
 		if ( $sthandler->rowCount() > 0 ) {
 			echo $usr->promote($_POST);
 		}else{
-			 header( 'Location: usernameError.php' ); //user doesnt exist
+			echo 'user doesnt exist';//user doesnt exist
 		}
 	}
 
-	if( !(isset( $_POST['ban'] ) ) ) {
+	if( !(isset( $_POST['activate'] ) ) ) {
 	} else {//if  ban user name button was clicked
 		$usr = new Users;
 		$usr->storeFormValues($_POST);
 		
 	//Check if the promoteUsername exists
-		$banUsername = ( $_POST['banUsername']);
+		$activateUsername = ( $_POST['activateUsername']);
 		$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-		$sthandler = $con->prepare("SELECT username FROM users WHERE username = :banUsername");
-		$sthandler->execute(array(':banUsername'=>$banUsername));
+		$sthandler = $con->prepare("SELECT username FROM users WHERE username = :activateUsername");
+		$sthandler->execute(array(':activateUsername'=>$activateUsername));
 		if ( $sthandler->rowCount() > 0 ) {
 			echo $usr->ban($_POST);
 		}else{
-			 header( 'Location: usernameError.php' ); //user doesnt exist
+			 echo 'user doesnt exist';
 		}
 	}
 

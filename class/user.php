@@ -12,7 +12,7 @@ session_start();
 	 public $privilege= null;
 	 
 	 public $promoteUsername = null;
-	 public $banUsername = null;
+	 public $activateUsername = null;
 	 
 	 public $title = null;
 	 public $blogPost = null;
@@ -35,7 +35,7 @@ session_start();
 		 if( isset( $data['surname'] ) ) $this->surname = stripslashes( strip_tags( $data['surname'] ) );
 		 if( isset( $data['privilege'] ) ) $this->privilege  = stripslashes( strip_tags( $data['privilege'] ) );
 		 if( isset( $data['promoteUsername'] ) ) $this->promoteUsername = stripslashes( strip_tags( $data['promoteUsername'] ) );
-		 if( isset( $data['banUsername'] ) ) $this->banUsername = stripslashes( strip_tags( $data['banUsername'] ) );
+		 if( isset( $data['activateUsername'] ) ) $this->activateUsername = stripslashes( strip_tags( $data['activateUsername'] ) );
 		 
 		 if( isset( $data['title'] ) ) $this->title = stripslashes( strip_tags( $data['title'] ) );
 		 if( isset( $data['blogPost'] ) ) $this->blogPost = stripslashes( strip_tags( $data['blogPost'] ) );
@@ -163,7 +163,7 @@ session_start();
 			try {
 				$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				$sql = "UPDATE users SET privilege = 1 WHERE username= :promoteUsername";
+				$sql = "UPDATE users SET privilege = 2 WHERE username= :promoteUsername";
 	
 				$stmt = $con->prepare( $sql );
 				$stmt->bindValue( "promoteUsername", $this->promoteUsername, PDO::PARAM_STR );
@@ -180,10 +180,10 @@ session_start();
 			try {
 				$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				$sql = "UPDATE users SET banned = NOT banned WHERE username= :banUsername";
+				$sql = "UPDATE users SET verified = NOT verified WHERE username= :activateUsername";
 	
 				$stmt = $con->prepare( $sql );
-				$stmt->bindValue( "banUsername", $this->banUsername, PDO::PARAM_STR );
+				$stmt->bindValue( "activateUsername", $this->activateUsername, PDO::PARAM_STR );
 				$stmt->execute();
 				
 				return "User Banned/Unbanned";
