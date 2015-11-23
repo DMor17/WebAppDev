@@ -31,7 +31,8 @@
 	<link rel="shortcut icon" href="images/icon.ico" > 
 	<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script src="js/scroll.js" type="text/javascript"></script>
+	<script src="js/readmore.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
     <body>
 		<div class="header">
@@ -91,7 +92,15 @@
 					<div class="date"><?php echo $blogTime;?></div>
 					<div class="author">By <?php echo $author;?></div>
 					<br>
-					<?php echo $post;?><br>
+					<section id="demo">
+						<article>
+						<p>
+							<?php echo $post;?>
+						</p>
+						</article>
+					</section>
+
+					
 							
 					<?php 
 						$con2 = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
@@ -163,6 +172,7 @@
 				}
 		}
 		?>
+		
 							<!-- Add a comment form -->
 							<div class="comment-feature">
 								<form method="post" action="">
@@ -175,6 +185,20 @@
 							</div>
 			</div>	
 		</div>
+		<script src="js/readmore.js"></script>
+		  <script>
+    $('#info').readmore({
+      moreLink: '<a href="#">Usage, examples, and options</a>',
+      collapsedHeight: 384,
+      afterToggle: function(trigger, element, expanded) {
+        if(! expanded) { // The "Close" link was clicked
+          $('html, body').animate({scrollTop: element.offset().top}, {duration: 100});
+        }
+      }
+    });
+
+    $('article').readmore({speed: 500});
+  </script>
     </body>
 </html>
 <!-- Edit a comment php -->
