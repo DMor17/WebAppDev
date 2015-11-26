@@ -31,8 +31,24 @@
 	<link rel="shortcut icon" href="images/icon.ico" > 
 	<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
 	<script src="js/readmore.js" type="text/javascript"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	
+	
+		<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$('#search-tags').autocomplete(
+			{
+				source: "searchTitle.php",
+				minLength: 3
+			});
+		});
+	</script>
+	
 </head>
     <body>
 		<div class="header">
@@ -58,12 +74,16 @@
 			<h2>A community to share your adventures with no matter your current location.</h2>
 			<h3>Use the search bar below to search by tag.</h3>
 			
+			<!--search-->
 			<form method="post" action="">
 			
 				<div class="center-round">
-					<input type="text" maxlength="30" value="Search..." onclick="this.value='';" autofocus name="searchText" class="search-round" required />
+					<div class="ui-widget">
+						<input name="search-tags" id="search-tags" class="search-round" maxlength="30" value="Search..." onclick="this.value='';" autofocus name="searchText"  required />
+					</div>
 					<input type="image" src="images/search.png" id="search-image" name="search" width="20" height="20" />
 				</div>
+				
 			</form>
 			
 		</div>
@@ -187,14 +207,14 @@
 		<?php			
 				}?>
 											<!-- Add a comment form -->
-							<div class="comment-feature">
+
 								<form method="post" action="">
 									<textarea input type="text" id="theComment" required name="theComment"> </textarea>
 									<input type="hidden" name="postID" value="<?php echo $postID; ?>">  
 									<br>
 									<input type="submit" name="insertComment" class="button-comment-round" value="Add Comment" />
 								</form>
-							</div> <?php
+		<?php
 		}
 		?>
 

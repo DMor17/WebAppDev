@@ -60,10 +60,13 @@ if ($_SESSION["loggedIn"]){
 		
 		<div class="container">
 			<div class="content">
-<br><br><br>
+				<br>
+				<br>
+				<br>
 					<form method="post" action="">
 							<h5>Enter Username to Promote to Admin</h5>
 							<input type="text" id="promoteUsername" maxlength="30" required name="promoteUsername"/>
+							<br>
 							<br>
 							<input type="submit" name="promote" value="Promote" />
 					</form>
@@ -74,17 +77,21 @@ if ($_SESSION["loggedIn"]){
 							<br>
 							<input type="submit" name="activate" value="Activate/Deactivate" />
 					</form>			
-
-		
 		
 					<form method="post" action="">
 						<h5>Create new post</h5>
-						<input type="text" id="title" maxlength="30" required name="title"/>
+						Title
+						<input type="text"  class="text-straight" id="title" maxlength="30" required name="title"/>
 						<br>
+						Post
 						<br>
 						<textarea rows="4" cols="50" input type="text" id="blogPost" required name="blogPost"> </textarea>
 						<br>
-						<input type="submit" name="submitPost" value="Post Blog" />
+						Tags (seperate by comma)
+						<br>
+						<input type="text"  class="text-straight" id="tags" maxlength="30" required name="tags"/>
+						<br>
+						<input type="submit" name="submitPost" class="button-register-round" value="Post Blog" />
 					</form>	
 
 
@@ -97,7 +104,7 @@ if ($_SESSION["loggedIn"]){
 						<form method="post" action="">
 						<div class="text-padder2">
 							<label>Enter Post Title to Edit</label><br>
-							<!--JQUERY-->
+							<!--JQUERY SHOULD BE HERE-->
 							<div class="ui-widget">
 								<input type="text" id="titleToEdit" maxlength="30" required name="titleToEdit"/>
 							</div>
@@ -106,17 +113,7 @@ if ($_SESSION["loggedIn"]){
 							<input type="submit" name="edit" value="Edit Post" />
 						</div>
 					</form>
-						<form method="post" action="">
-						<div class="text-padder3"><br/>
-							<label>Enter Post title to Remove</label><br>
-							<input type="text" id="deleteTitle" maxlength="30" required name="deleteTitle"/>
-							
-						</div>	<br/>
-						<div class="button-padder2">
-						<a href="admin-account.php" onclick="return confirm('Are you sure?')"><input type="submit" name="delete" value="Remove Post" /></a>
-							
-						</div>
-					</form>
+						
 					
 					</div>
 

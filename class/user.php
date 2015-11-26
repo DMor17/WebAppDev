@@ -16,6 +16,7 @@ session_start();
 	 
 	 public $title = null;
 	 public $blogPost = null;
+	 public $tags = null;
 	 
 	 public $titleToEdit = null;
 	 
@@ -39,6 +40,7 @@ session_start();
 		 
 		 if( isset( $data['title'] ) ) $this->title = stripslashes( strip_tags( $data['title'] ) );
 		 if( isset( $data['blogPost'] ) ) $this->blogPost = stripslashes( strip_tags( $data['blogPost'] ) );
+		 if( isset( $data['tags'] ) ) $this->tags = stripslashes( strip_tags( $data['tags'] ) );
 		 
 		 if( isset( $data['titleToEdit'] ) ) $this->titleToEdit = stripslashes( strip_tags( $data['titleToEdit'] ) );
 		 
@@ -198,11 +200,12 @@ session_start();
 			try {
 				$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-				$sql = "INSERT INTO posts(userID, title, blogPost) VALUES('$posterUserID', :title, :blogPost)";
+				$sql = "INSERT INTO posts(userID, title, blogPost, tags) VALUES('$posterUserID', :title, :blogPost, :tags)";
 				
 				$stmt = $con->prepare( $sql );
 				$stmt->bindValue( "title", $this->title, PDO::PARAM_STR );
 				$stmt->bindValue( "blogPost", $this->blogPost, PDO::PARAM_STR );
+				$stmt->bindValue( "tags", $this->tags, PDO::PARAM_STR );
 				$stmt->execute();
 				
 				echo "Post Created <br/> <a href='admin-index.php'>View Post</a>";
