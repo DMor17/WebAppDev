@@ -97,7 +97,7 @@ body{
 
 
 .content {
-			margin:0 auto;
+			padding-left:10%;
 			width: 70%;
 			height: auto;
 			text-align:left;
@@ -136,6 +136,17 @@ body{
 
 }
 
+.tags{
+
+		float:right;
+		right:0;
+		display:block;
+		position:relative;
+		background:#FAFAFA;
+		height:600px;
+		width: 15%;
+
+}
 .end-article{
 
 			padding:30px;

@@ -77,10 +77,17 @@
 		
 	<div class="colour-split"></div>
 	
-	<div class="container"> <div id="toContainer"></div>
-		<div class="content">
+	<div class="container"> 
+	<div id="toContainer"></div>
+	<div class="tags">
+		Featured Tags	
+			<br>
+			________________________
+	</div>	
+	<div class="content">
 			<br>
 					<div class="content">
+
 		<!-- If user is a reader display php script below. Allow them to comment -->
 		<?php
 				$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD );
