@@ -36,8 +36,6 @@
 	
 	<script src="js/readmore.js" type="text/javascript"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-	
 </head>
     <body>
 		<div class="header">
@@ -139,7 +137,7 @@
 					<div class="date"><?php echo $blogTime;?></div>
 					<div class="author">By <?php echo $author;?></div>
 					<br>
-					
+			
 					<article>
 						<p>
 							<?php echo $post;?>
@@ -257,6 +255,8 @@
 		  <script>
 			$('article').readmore({speed: 500});
 		   </script>
+		   
+		   
     </body>
 </html>
 <!-- Edit a comment php -->
