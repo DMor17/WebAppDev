@@ -136,6 +136,13 @@ body{
 
 }
 
+.end-article{
+
+			padding:30px;
+			margin:0 auto;
+
+
+}
 
 .text-round { 
 			border-radius: 46px; 
@@ -189,6 +196,51 @@ body{
 			padding: 10px;
 }
 
+.text-straight-post{
+		width:60%;
+		height:200px;
+		
+		border: 1px solid #D9D9D9;
+		text-align:left;
+		display: block; 
+	
+		color:#919191;
+	
+
+}
+
+.rating-block{
+			float:left;
+			position:absolute;
+			padding-top:10px;
+			width: 50px;
+			height: 50px;
+			display:inline-block;
+			
+
+}
+
+
+.rating{
+	    text-align:center;
+		font-weight: 400;
+		font-style: normal;
+		color: #E31B76;
+		font-size: 30px;	
+
+
+}
+.edit-data-admin{
+		float:right;
+
+
+}
+
+.edit-data{
+		float:left;
+		padding-left:10px;
+
+}
 
 .button-round { 
 			border-radius: 46px; 
@@ -237,7 +289,7 @@ body{
 			height:30px; 
 			width: 80px;
 			background-color:transparent;
-			border: 1px solid #E142E1;
+			border: 1px solid #E31B76;
 			outline-width: 0;
 			text-align:center;
 			font-family: robotoRegular;
@@ -247,6 +299,25 @@ body{
 			font-style: normal;
 			color:#404040;
 }	
+
+.button-register-round-wide { 
+			border-radius: 46px; 
+			-moz-border-radius: 46px; 
+			-webkit-border-radius: 46px;
+			height:30px; 
+			width: 150px;
+			background-color:transparent;
+			border: 1px solid #E31B76;
+			outline-width: 0;
+			text-align:center;
+			font-family: robotoRegular;
+			font-size: 14px;
+			letter-spacing: 0;
+			font-weight: 400;
+			font-style: normal;
+			color:#404040;
+}	
+
 
 .center-round{
 			margin:0 auto;
@@ -292,15 +363,6 @@ input[type="button"]:hover{
 			color: #dfdfdf;
 }
 
-input[type="text"]{
-		  border: 2px solid #D9D9D9;
-		  outline-width: 0;
-		  padding: 5px;
-		  width:10%;
-		  height:10px;
-		  font-size: 15px; 
-		  font-family: robotoMedium;
-}
 
 
 h1{
@@ -406,7 +468,7 @@ textarea{
 			font-size: 1em;
 			text-decoration: underline;
 			color: #E142E1;
-			padding-left:30px;
+			
 			padding-top: 20px;
 
 

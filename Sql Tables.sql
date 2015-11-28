@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 
 CREATE TABLE IF NOT EXISTS `images` (
   `imageID` 		int(6)  				NOT NULL AUTO_INCREMENT		COMMENT 'ID of the image',
-  `image` 			blob					NOT NULL 		COMMENT 'The image being stored',
+  `image` 			longblob					NOT NULL 		COMMENT 'The image being stored',
   `postID` 			int(6) 				NOT NULL 		COMMENT 'Blog Post ID if post image is in',
   PRIMARY KEY (`imageID`),
   FOREIGN KEY(`postID`) REFERENCES posts(`postID`)

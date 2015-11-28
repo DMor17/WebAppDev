@@ -33,16 +33,47 @@ if ($_SESSION["loggedIn"]){
 <head>
 	<title>Adventure Blog | Admin</title>
 	<link href="stylesheets/stylesheet-index.css" rel="stylesheet" type="text/css">
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> <!--for ajax-->
 	<link rel="shortcut icon" href="images/icon.ico" > 
+	
 	<meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="js/scroll.js" type="text/javascript"></script>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			$('#titleToEdit').autocomplete(
+			{
+				source: "searchTitle.php",
+				minLength: 1
+			});
+						$('#activateUsername').autocomplete(
+			{
+				source: "searchUsername.php",
+				minLength: 1
+			});
+			
+						$('#promoteUsername').autocomplete(
+			{
+				source: "searchUsername.php",
+				minLength: 1
+			});
+			
+		});
+	</script>
+	
 </head>
     <body>
 	<!-- Header with logo and login -->
 		<div class="header">
 			
-				<img src="images/xplor.png"  class="xplor" alt=""/>
+				<a href="admin-index.php"><img src="images/xplor.png"  class="xplor" alt=""/></a>
 				<div class="login">
 					<!--Form called 'post'-->
 					<form method="post" action="">
@@ -64,63 +95,57 @@ if ($_SESSION["loggedIn"]){
 				<br>
 				<br>
 					<form method="post" action="">
-							<h5>Enter Username to Promote to Admin</h5>
-							<input type="text" id="promoteUsername" maxlength="30" required name="promoteUsername"/>
-							<br>
-							<br>
-							<input type="submit" name="promote" value="Promote" />
+						<h5>Enter Username to Promote to Admin</h5>
+						<div class="ui-widget">
+							<input type="text" class="text-straight" id="promoteUsername" maxlength="30" required name="promoteUsername"/>
+						</div>
+						<br>
+						<input type="submit"  class="button-register-round" name="promote" value="Promote" />
 					</form>
 						
 					<form method="post" action="">
-							<h5>Activate/Deactivate User Accounts</h5>
-							<input type="text" id="activateUsername" maxlength="30" required name="activateUsername"/>
-							<br>
-							<input type="submit" name="activate" value="Activate/Deactivate" />
+						<h5>Verify User Accounts</h5>
+						
+						<div class="ui-widget">
+							<input type="text" id="activateUsername" class="text-straight" maxlength="30" required name="activateUsername"/>
+						</div>
+						
+						<br>
+						<input type="submit"  class="button-register-round-wide" name="activate" value="Activate/Deactivate" />
 					</form>			
 		
 					<form method="post" action="">
 						<h5>Create new post</h5>
-						Title
+					Title
 						<input type="text"  class="text-straight" id="title" maxlength="30" required name="title"/>
 						<br>
-						Post
+					Post
 						<br>
-						<textarea rows="4" cols="50" input type="text" id="blogPost" required name="blogPost"> </textarea>
-						<br>
-						Tags (seperate by comma)
+						<textarea input class="text-straight-post" type="text" id="blogPost" required name="blogPost"> </textarea>
+						<br><br>
+					Tags (seperate by comma)
 						<br>
 						<input type="text"  class="text-straight" id="tags" maxlength="30" required name="tags"/>
 						<br>
+						Upload images here!
 						<input type="submit" name="submitPost" class="button-register-round" value="Post Blog" />
+						<br>
 					</form>	
 
-
-			
-			<div class="editContainer">
-		
-				<div align ="center"><b>Edit Post</b></div>
-					<div class="border4">
-
-						<form method="post" action="">
-						<div class="text-padder2">
-							<label>Enter Post Title to Edit</label><br>
-							<!--JQUERY SHOULD BE HERE-->
+					<form method="post" action="">
+						<h5>Edit Post</h5>
+						Enter post title to edit
+							<br>
 							<div class="ui-widget">
-								<input type="text" id="titleToEdit" maxlength="30" required name="titleToEdit"/>
+								<input type="text" id="titleToEdit"  class="text-straight" maxlength="30" required name="titleToEdit"/>
 							</div>
-						</div>	
-						<div class="button-padder2">
-							<input type="submit" name="edit" value="Edit Post" />
-						</div>
+							<br>
+							<input type="submit" name="edit"  class="button-register-round value="Edit Post" />
 					</form>
-						
 					
-					</div>
-
-
-				</div>
 			</div>
 		</div>
+		
     </body>
 </html>
 
@@ -145,8 +170,6 @@ if ($_SESSION["loggedIn"]){
 			} else {
 				echo 'Post title Does NOT Exist';//header( 'Location: admin-EditPost.php');
 			}
-		
-		
 				
 		}
 	

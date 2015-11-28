@@ -21,6 +21,8 @@
 				header( 'Location: index.php' );
 			}
 		}
+		
+		if(!isset( $_POST['insertComment'] ) ) { 
 ?>
 
 <!DOCTYPE html>
@@ -33,21 +35,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
 	<script src="js/readmore.js" type="text/javascript"></script>
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	
-	
-		<script type="text/javascript">
-		$(document).ready(function()
-		{
-			$('#search-tags').autocomplete(
-			{
-				source: "searchTitle.php",
-				minLength: 3
-			});
-		});
-	</script>
+
 	
 </head>
     <body>
@@ -78,16 +67,16 @@
 			<form method="post" action="">
 			
 				<div class="center-round">
-					<div class="ui-widget">
 						<input name="search-tags" id="search-tags" class="search-round" maxlength="30" value="Search..." onclick="this.value='';" autofocus name="searchText"  required />
-					</div>
-					<input type="image" src="images/search.png" id="search-image" name="search" width="20" height="20" />
+					    <input type="image" src="images/search.png" id="search-image" name="search" width="20" height="20" />
 				</div>
 				
 			</form>
 			
 		</div>
-		<div class="colour-split"></div>
+		
+	<div class="colour-split"></div>
+	
 	<div class="container"> <div id="toContainer"></div>
 		<div class="content">
 			<br>
@@ -106,6 +95,37 @@
 					$post = $row['blogPost'];
 					$blogTime = $row['blogTime'];
 					$author = $row['username'];
+					$rating = $row['rating'];
+				?>
+				
+					<div class="rating-block">
+						<div class="rating">
+							<?php echo $rating;?>
+							<form method="post" action="">
+									<input type="image" src="images/up.png" name="addOne" value="+1">
+									<br>
+									<input type="image" src="images/down.png" name="subOne" value="-1">
+							</form>
+						</div>
+					</div>
+				<?php
+							if(isset( $_POST['addOne'] ) ) { 		
+						
+								$sthandler = $con->prepare("UPDATE posts  SET rating=rating + 1 WHERE postID = '$postID' ");
+								$sthandler->execute();
+								
+								header( 'Location: admin-index.php' );
+								
+							}
+							
+							if(isset( $_POST['subOne'] ) ) { 
+								$sthandler = $con->prepare("UPDATE posts  SET rating=rating - 1 WHERE postID = '$postID' ");
+								$sthandler->execute();
+								
+								header( 'Location: admin-index.php' );
+							}
+							
+
 				?>
 				
 					<h4><?php echo $title;?></h4>
@@ -117,15 +137,16 @@
 						<p>
 							<?php echo $post;?>
 						</p>
-					</article>
 					
+
 							<!-- Delete Post form -->
 							<form method="post" action="">
-								<div class='edit-data'>
+								<div class='edit-data-admin'>
 									<input type="hidden" name="deletePostID" value="<?php echo $postID; ?>">  
-									<input type="image" src="images/delete.png" name="deletePost" value="Delete">
+									<input type="image" src="images/deletePost.png" name="deletePost" value="Delete">
 								</div>
 							</form>
+							
 					<!-- Delete a comment -->
 					<?php
 					if(isset( $_POST['deletePost'] ) ) { 
@@ -157,11 +178,12 @@
 							
 					<!-- Edit comment form -->
 							<form method="post" action="">
-								<div class="comment-feature">
+								<div class="edit-data">
 									<input type="image" src="images/edit.png" name="edit" value="Edit">
 									<input type="hidden" name="commentID" value="<?php echo $commentID; ?>">  
 								</div>
 							</form>
+							
 					<!--Edit the users comment, go to editComment.php -->
 					<?php
 					if(isset( $_POST['edit'] ) ) { 
@@ -207,13 +229,16 @@
 		<?php			
 				}?>
 											<!-- Add a comment form -->
-
+						<br>
+						<br>
 								<form method="post" action="">
 									<textarea input type="text" id="theComment" required name="theComment"> </textarea>
 									<input type="hidden" name="postID" value="<?php echo $postID; ?>">  
 									<br>
 									<input type="submit" name="insertComment" class="button-comment-round" value="Add Comment" />
 								</form>
+			</article>
+			<div class="end-article"></div>
 		<?php
 		}
 		?>
@@ -230,7 +255,7 @@
 <!-- Edit a comment php -->
 <?php
 
-	if(isset( $_POST['insertComment'] ) ) { 
+	}else{
 											
 		$newComment = $_POST['theComment'];
 		$postID = $_POST['postID'];
@@ -241,11 +266,12 @@
 								
 		if($usr->addComment($_POST)){
 			//successfully added comment
-			header('Location: admin-index.php');
+			header( 'Location: admin-index.php' );
+			
 		} else {
 			//failed to add comment
+			
 		}
-									
 		unset($_POST['insertComment']);
 	}
 
