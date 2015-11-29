@@ -107,6 +107,7 @@
 						<div class="rating">
 							<?php echo $rating;?>
 							<form method="post" action="">
+									<input type="hidden" name="ratingPostID" value="<?php echo $postID; ?>"> 
 									<input type="image" src="images/up.png" name="addOne" value="+1">
 									<br>
 									<input type="image" src="images/down.png" name="subOne" value="-1">
@@ -115,8 +116,10 @@
 					</div>
 				<?php
 							if(isset( $_POST['addOne'] ) ) { 		
-						
-								$sthandler = $con->prepare("UPDATE posts  SET rating=rating + 1 WHERE postID = '$postID' ");
+							
+												$theRatingPostID = $_POST['ratingPostID'];
+
+								$sthandler = $con->prepare("UPDATE posts  SET rating=rating + 1 WHERE postID = '$theRatingPostID' ");
 								$sthandler->execute();
 								
 								header( 'Location: admin-index.php' );
@@ -124,7 +127,9 @@
 							}
 							
 							if(isset( $_POST['subOne'] ) ) { 
-								$sthandler = $con->prepare("UPDATE posts  SET rating=rating - 1 WHERE postID = '$postID' ");
+													$theRatingPostID = $_POST['ratingPostID'];
+
+								$sthandler = $con->prepare("UPDATE posts  SET rating=rating - 1 WHERE postID = '$theRaringPostID' ");
 								$sthandler->execute();
 								
 								header( 'Location: admin-index.php' );
@@ -175,7 +180,11 @@
 							$commentID = $row2['commentID'];
 							$commenterUsername = $row2['commenterUsername'];
 							$_comment = $row2['_comment'];
-							$report = $row2['report'];					
+							$report = $row2['report'];		
+							
+					
+							if(!isset( $_POST['deleteMe'] ) ) { 
+if(!isset( $_POST['edit'] ) ) { 							
 					?>
 							<br>
 							<div class="username"><?php echo $commenterUsername;?> </div>
@@ -191,8 +200,8 @@
 							
 					<!--Edit the users comment, go to editComment.php -->
 					<?php
-					if(isset( $_POST['edit'] ) ) { 
-											
+					
+							}else{
 						$commentID = $_POST['commentID'];
 						$_SESSION['currentCommentID'] = $commentID;
 																	
@@ -203,13 +212,12 @@
 																		
 						$_SESSION['editComment'] = $row['_comment'];
 																		
-						if($row) {
+					
 							header( 'Location: editComment.php');
-						} else {
-							echo 'Comment Does NOT Exist';
+						
 						}
 																
-					}
+					
 					?>
 					<!-- Delete comment form -->
 							<form method="post" action="">
@@ -220,7 +228,7 @@
 							</form>
 					<!-- Delete a comment -->
 					<?php
-					if(isset( $_POST['deleteMe'] ) ) { 
+						}else{
 						$theID2 = $_POST['deleteCommentID'];
 												
 						$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
