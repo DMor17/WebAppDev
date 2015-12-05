@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `rating`		int(11)				DEFAULT 0		COMMENT 'Rating',
   PRIMARY KEY (`postID`),
   FOREIGN KEY (`userID`) REFERENCES users(`userID`)
+  FOREIGN KEY ()
 );
 
 CREATE TABLE IF NOT EXISTS `images` (

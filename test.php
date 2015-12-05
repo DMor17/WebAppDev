@@ -30,9 +30,10 @@ session_start();
 <br>
 <b>Verified: </b><?php echo $_SESSION['verified'] ;?>
 <br>
-<b>Logged in: </b><?php echo $_SESSION['loggedIn'] ;?>		       
-				
-				
+<b>Logged in: </b><?php echo $_SESSION['loggedIn'] ;?>
+
+
+
 <br>
 
 <ul>

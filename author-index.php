@@ -224,3 +224,11 @@
 	}
 
 ?>
+
+<php ?>
+	function displayImage() {
+
+
+	}
+
+</php>

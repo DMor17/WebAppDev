@@ -92,6 +92,8 @@
 			$sthandler = $con->prepare("SELECT * FROM posts, users WHERE posts.userID = users.userID ORDER BY blogTime DESC");
 			$sthandler->execute();
 
+
+
 				while ($row = $sthandler->fetch(PDO::FETCH_ASSOC)){
 					$postID = $row['postID'];
 					$title = $row['title'];

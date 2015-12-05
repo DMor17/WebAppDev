@@ -201,13 +201,17 @@ session_start();
 				$con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
 				$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 				$sql = "INSERT INTO posts(userID, title, blogPost, tags) VALUES('$posterUserID', :title, :blogPost, :tags)";
-				
+
+
 				$stmt = $con->prepare( $sql );
 				$stmt->bindValue( "title", $this->title, PDO::PARAM_STR );
 				$stmt->bindValue( "blogPost", $this->blogPost, PDO::PARAM_STR );
 				$stmt->bindValue( "tags", $this->tags, PDO::PARAM_STR );
 				$stmt->execute();
-				
+
+				// Idea: Find the latest post by using the MAX SQL function, use this to insert the relevant POST ID into the images
+				// table, as otherwise how can we find the correct POST ID? And a post must have an image, so we can't put it in later.
+
 				echo "Post Created <br/> <a href='admin-index.php'>View Post</a>";
 			}catch( PDOException $e ) {
 				return $e->getMessage();
